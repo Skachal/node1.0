@@ -92,3 +92,20 @@ app.get('/contacts', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`);
 });
+
+
+module.exports = {
+  entry: './src/index.js', // Ваш основной входной файл
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'), // Папка для скомпилированных файлов
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ejs$/, // Применять загрузчик только к файлам с расширением .ejs
+        loader: 'ejs-loader',
+      },
+    ],
+  },
+};
